@@ -12,14 +12,14 @@ export default function Profile() {
 	if (!isConnected) {
 		return (
 			<button
-				className='bg-blue-400 hover:bg-blue-400/60 rounded-lg m-4 p-4 font-bold float-right'
+				className='bg-blue-400 hover:bg-blue-400/60 absolute top-0 right-4 rounded-lg m-4 p-4 font-bold'
 				onClick={() => connect()}>
 				Connect Wallet
 			</button>
 		);
 	} else {
 		return (
-			<div>
+			<div className='absolute top-0 right-4 font-bold'>
 				<div>Connected to {ensName ?? address}</div>
 				<button onClick={() => disconnect()}>Disconnect Wallet</button>
 			</div>
