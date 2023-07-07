@@ -1,4 +1,4 @@
-import { useAccount, useConnect, useEnsName } from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useEnsName } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 
 export default function Profile() {
@@ -7,10 +7,20 @@ export default function Profile() {
 	const { connect } = useConnect({
 		connector: new InjectedConnector(),
 	});
+	const { disconnect } = useDisconnect();
 
 	if (!isConnected) {
-		return <button onClick={() => connect()}>Connect Wallet</button>;
+		return (
+			<button className='' onClick={() => connect()}>
+				Connect Wallet
+			</button>
+		);
 	} else {
-		return <div>Connected to {ensName ?? address}</div>;
+		return (
+			<div>
+				<div>Connected to {ensName ?? address}</div>
+				<button onClick={() => disconnect()}>Disconnect Wallet</button>
+			</div>
+		);
 	}
 }

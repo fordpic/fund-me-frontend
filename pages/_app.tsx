@@ -1,17 +1,17 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { configureChains, sepolia, createConfig, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+require('dotenv').config({ path: '.env' });
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
+const { chains, publicClient } = configureChains(
 	[sepolia],
-	[publicProvider()]
+	[alchemyProvider({ apiKey: process.env.ALCHEMY_KEY || '' })]
 );
 
 const config = createConfig({
 	autoConnect: true,
 	publicClient,
-	webSocketPublicClient,
 });
 
 export default function App({ Component, pageProps }: AppProps) {
