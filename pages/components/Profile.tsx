@@ -11,7 +11,9 @@ export default function Profile() {
 
 	if (!isConnected) {
 		return (
-			<button className='' onClick={() => connect()}>
+			<button
+				className='bg-blue-400 hover:bg-blue-400/60 rounded-lg m-4 p-4 font-bold float-right'
+				onClick={() => connect()}>
 				Connect Wallet
 			</button>
 		);
