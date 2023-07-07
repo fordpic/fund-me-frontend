@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Profile, Footer } from '../components';
+import { Profile, Footer, FundBtn } from '../components';
 
 export default function Home() {
 	return (
@@ -27,6 +27,10 @@ export default function Home() {
 						I simply built this as a way to play with & get comfortable with{' '}
 						<span className='text-orange-500'>wagmi</span> (awesome job guys
 						btw!)
+					</div>
+
+					<div>
+						<FundBtn />
 					</div>
 				</div>
 				<Footer />
