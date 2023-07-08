@@ -20,8 +20,12 @@ export function Profile() {
 	} else {
 		return (
 			<div className='absolute top-0 right-4 font-bold'>
-				<div>Connected to {ensName ?? address}</div>
-				<button onClick={() => disconnect()}>Disconnect Wallet</button>
+				<div className='text-purple-500'>Connected to {ensName ?? address}</div>
+				<button
+					className='bg-blue-500 hover:bg-blue-400/60 border-2 border-blue-400 absolute top-2 right-4 rounded-lg m-4 p-4 font-bold'
+					onClick={() => disconnect()}>
+					Disconnect Wallet
+				</button>
 			</div>
 		);
 	}

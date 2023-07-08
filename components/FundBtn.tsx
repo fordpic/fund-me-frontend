@@ -1,10 +1,17 @@
 import { useState } from 'react';
-import { usePrepareContractWrite, useContractWrite } from 'wagmi';
+import {
+	usePrepareContractWrite,
+	usePrepareSendTransaction,
+	useSendTransaction,
+	useContractWrite,
+} from 'wagmi';
 import { FUND_ME_ADDRESS, abi } from '../constants';
 import { parseEther } from 'viem';
 
 export function FundBtn() {
 	const [fundValue, setFundValue] = useState('');
+
+	// Need send txn
 
 	const { config } = usePrepareContractWrite({
 		address: FUND_ME_ADDRESS,
