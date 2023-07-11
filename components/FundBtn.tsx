@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import {
 	usePrepareContractWrite,
-	usePrepareSendTransaction,
-	useSendTransaction,
 	useContractWrite,
+	useWaitForTransaction,
 } from 'wagmi';
 import { FUND_ME_ADDRESS, abi } from '../constants';
 import { parseEther } from 'viem';
@@ -11,16 +10,24 @@ import { parseEther } from 'viem';
 export function FundBtn() {
 	const [fundValue, setFundValue] = useState('');
 
-	// Need send txn
-
 	const { config } = usePrepareContractWrite({
 		address: FUND_ME_ADDRESS,
 		abi: abi,
 		functionName: 'fund',
 		value: parseEther(fundValue),
+		enabled: false,
 	});
 
-	const { data, isLoading, isSuccess, write } = useContractWrite(config);
+	const { data, error, write } = useContractWrite(config);
+
+	const {
+		data: txData,
+		isLoading,
+		isSuccess,
+	} = useWaitForTransaction({
+		confirmations: 1,
+		hash: data?.hash,
+	});
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFundValue(e.target.value);
@@ -35,7 +42,7 @@ export function FundBtn() {
 				placeholder='Must fund a minimum of $5 worth of ETH'
 			/>
 			<button
-				disabled={!write || isLoading}
+				disabled={!write}
 				onClick={() => write?.()}
 				className='bg-blue-500 hover:bg-blue-400/60 border-2 border-blue-400 rounded-2xl m-8 p-10 px-24 font-bold text-xl'>
 				GIB ME $$$

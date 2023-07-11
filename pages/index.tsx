@@ -10,11 +10,11 @@ export default function Home() {
 				</div>
 
 				<div className='text-center items-center justify-center h-[80vh] flex flex-col m-8 p-28 border border-pink-400'>
-					<div className='overflow-auto font-semibold text-lg text-purple-500'>
+					<div className='font-semibold text-lg text-purple-500'>
 						Give me all your (fake) monies so that I can use them!
 					</div>
 
-					<div className='my-4 overflow-auto font-semibold text-lg text-blue-500'>
+					<div className='my-4 font-semibold text-lg text-blue-500'>
 						<span className='text-purple-500'>Fund Me</span> is a{' '}
 						<span className='text-orange-500'>~somewhat~</span> simple set of
 						contracts that essentially just allow for you (the user) to deposit
@@ -23,7 +23,7 @@ export default function Home() {
 						given time.
 					</div>
 
-					<div className='my-4 overflow-auto font-semibold text-lg text-purple-500'>
+					<div className='my-4 font-semibold text-lg text-purple-500'>
 						I simply built this as a way to play with & get comfortable with{' '}
 						<span className='text-orange-500'>wagmi</span> (awesome job guys
 						btw!)
