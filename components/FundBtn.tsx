@@ -8,7 +8,7 @@ import { FUND_ME_ADDRESS, abi } from '../constants';
 import { parseEther } from 'viem';
 
 export function FundBtn() {
-	const [fundValue, setFundValue] = useState('');
+	const [fundValue, setFundValue] = useState<string>('');
 
 	const { config } = usePrepareContractWrite({
 		address: FUND_ME_ADDRESS,
@@ -27,6 +27,7 @@ export function FundBtn() {
 	} = useWaitForTransaction({
 		confirmations: 1,
 		hash: data?.hash,
+		enabled: false,
 	});
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +43,7 @@ export function FundBtn() {
 				placeholder='Must fund a minimum of $5 worth of ETH'
 			/>
 			<button
-				disabled={!write}
+				// disabled={!write}
 				onClick={() => write?.()}
 				className='bg-blue-500 hover:bg-blue-400/60 border-2 border-blue-400 rounded-2xl m-8 p-10 px-24 font-bold text-xl'>
 				GIB ME $$$
