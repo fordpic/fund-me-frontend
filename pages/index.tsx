@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
+import { useContractRead, useBalance } from 'wagmi';
 import { Profile, Footer, FundBtn, ProgressBar } from '../components';
+import { FUND_ME_ADDRESS, abi } from '../constants';
 
 export default function Home() {
+	const { data, isError, isLoading } = useBalance({
+		address: FUND_ME_ADDRESS,
+	});
+
 	return (
 		<>
 			<div className='min-h-screen min-w-screen bg-slate-300 absolute'>
@@ -11,7 +18,8 @@ export default function Home() {
 
 				<div className='text-center items-center justify-center h-[80vh] flex flex-col m-8 p-28 border border-pink-400'>
 					<div className='font-semibold text-lg text-purple-500'>
-						Give me all your (fake) monies so that I can use them!
+						Give me all your <span className='text-orange-500'>(fake)</span>{' '}
+						monies so that I can use them!
 					</div>
 
 					<div className='my-4 font-semibold text-lg text-blue-500'>
@@ -31,7 +39,7 @@ export default function Home() {
 
 					<div className='space-y-4'>
 						<FundBtn />
-						<ProgressBar />
+						<ProgressBar balance={data?.formatted} />
 					</div>
 				</div>
 				<Footer />

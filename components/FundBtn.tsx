@@ -40,10 +40,11 @@ export function FundBtn() {
 				type='text'
 				value={fundValue}
 				onChange={handleInputChange}
-				placeholder='Must fund a minimum of $5 worth of ETH'
+				placeholder='Minimum $5 (ETH)'
+				className='p-4 text-center'
 			/>
 			<button
-				// disabled={!write}
+				disabled={!write}
 				onClick={() => {
 					setBtnClicked(true);
 					write?.();
@@ -54,11 +55,13 @@ export function FundBtn() {
 			{isLoading && <div>Check Wallet</div>}
 			{isSuccess && (
 				<div>
-					<div>
-						Thank you! You have successfully given me some fake monies!!!
+					<div className='font-semibold text-blue-500'>
+						<span className='font-semibold text-orange-500'>Thank you!</span>{' '}
+						You have successfully given me some fake monies!!!
 					</div>
-					<div>Transaction: {JSON.stringify(data)}</div>
-					<a href={`https://sepolia.etherscan.io/tx/${data?.hash}`}>
+					<a
+						className='font-semibold text-purple-500 hover:text-purple-500/95'
+						href={`https://sepolia.etherscan.io/tx/${data?.hash}`}>
 						See On Sepolia Etherscan
 					</a>
 				</div>
