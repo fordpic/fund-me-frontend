@@ -9,13 +9,13 @@ import { parseEther } from 'viem';
 
 export function FundBtn() {
 	const [fundValue, setFundValue] = useState<string>('');
+	const [btnClicked, setBtnClicked] = useState(false);
 
 	const { config } = usePrepareContractWrite({
 		address: FUND_ME_ADDRESS,
 		abi: abi,
 		functionName: 'fund',
 		value: parseEther(fundValue),
-		enabled: false,
 	});
 
 	const { data, error, write } = useContractWrite(config);
@@ -27,7 +27,7 @@ export function FundBtn() {
 	} = useWaitForTransaction({
 		confirmations: 1,
 		hash: data?.hash,
-		enabled: false,
+		enabled: btnClicked,
 	});
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +44,10 @@ export function FundBtn() {
 			/>
 			<button
 				// disabled={!write}
-				onClick={() => write?.()}
+				onClick={() => {
+					setBtnClicked(true);
+					write?.();
+				}}
 				className='bg-blue-500 hover:bg-blue-400/60 border-2 border-blue-400 rounded-2xl m-8 p-10 px-24 font-bold text-xl'>
 				GIB ME $$$
 			</button>
