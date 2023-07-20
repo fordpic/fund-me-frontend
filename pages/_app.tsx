@@ -2,11 +2,14 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { configureChains, sepolia, createConfig, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
-require('dotenv').config({ path: '.env' });
+import * as dotenv from 'dotenv';
+// require('dotenv').config({ path: '../.env' });
+
+dotenv.config({ path: '../.env' });
 
 const { chains, publicClient } = configureChains(
 	[sepolia],
-	[alchemyProvider({ apiKey: process.env.ALCHEMY_KEY || '' })]
+	[alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY || '' })]
 );
 
 const config = createConfig({

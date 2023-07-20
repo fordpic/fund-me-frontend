@@ -21,7 +21,7 @@ export function FundBtn() {
 	const { data, error, write } = useContractWrite(config);
 
 	const {
-		data: txData,
+		data: txnData,
 		isLoading,
 		isSuccess,
 	} = useWaitForTransaction({
