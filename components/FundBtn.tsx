@@ -18,7 +18,7 @@ export function FundBtn() {
 		value: parseEther(fundValue),
 	});
 
-	const { data, error, write } = useContractWrite(config);
+	const { data, write } = useContractWrite(config);
 
 	const {
 		data: txnData,

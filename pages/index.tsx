@@ -1,9 +1,9 @@
 import { useBalance } from 'wagmi';
 import { Profile, Footer, FundBtn, ProgressBar } from '../components';
-import { FUND_ME_ADDRESS, abi } from '../constants';
+import { FUND_ME_ADDRESS } from '../constants';
 
 export default function Home() {
-	const { data, isError, isLoading } = useBalance({
+	const { data } = useBalance({
 		address: FUND_ME_ADDRESS,
 	});
 
