@@ -2,7 +2,7 @@ import { Linkedin, GitHub, Mail, Twitter } from 'react-feather';
 
 export function Footer() {
 	return (
-		<footer className='text-center items-center space-x-8 justify-center flex bg-slate-300 border-t border-purple-500/95 h-12'>
+		<footer className='text-center items-center space-x-8 justify-center flex bg-slate-300 border-t-4 border-purple-500/95 h-12 shadow-md border-double'>
 			<div>
 				<a
 					href='https://github.com/fordpic'

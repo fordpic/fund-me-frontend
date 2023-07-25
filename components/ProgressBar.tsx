@@ -1,6 +1,3 @@
-// import { formatEther } from 'viem';
-// import { parseNum } from '../utils';
-
 type ProgressBarProps = {
 	balance: string | undefined;
 };

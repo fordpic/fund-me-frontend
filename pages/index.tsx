@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useContractRead, useBalance } from 'wagmi';
+import { useBalance } from 'wagmi';
 import { Profile, Footer, FundBtn, ProgressBar } from '../components';
 import { FUND_ME_ADDRESS, abi } from '../constants';
 
@@ -12,11 +11,11 @@ export default function Home() {
 		<>
 			<div className='min-h-screen min-w-screen bg-slate-300 absolute'>
 				<Profile />
-				<div className='text-start font-extrabold text-3xl m-4 pt-4'>
+				<div className='text-start font-extrabold text-3xl m-4 pt-4 text-orange-500'>
 					Fund Me
 				</div>
 
-				<div className='text-center items-center justify-center h-[80vh] flex flex-col m-8 p-28 border border-pink-400'>
+				<div className='text-center items-center justify-center h-[80vh] flex flex-col m-8 p-28'>
 					<div className='font-semibold text-lg text-purple-500'>
 						Give me all your <span className='text-orange-500'>(fake)</span>{' '}
 						monies so that I can use them!
